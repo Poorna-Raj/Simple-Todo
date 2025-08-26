@@ -10,6 +10,11 @@ window.addEventListener("DOMContentLoaded", async () => {
 });
 
 async function openModal(source,id){
+    document.getElementById("title").value = "";
+    document.getElementById("description").value = "";
+    document.getElementById("dueDate").value = "";
+    document.getElementById("priority").value = "";
+    document.getElementById("status").value = "";
     const modal = document.getElementById("modal");
     if(source === "addBtn"){
         modal.classList.add("flex");
@@ -17,7 +22,15 @@ async function openModal(source,id){
     }
     else if(source === "card"){
         try{
-            const data = await window.getApi.fetchById(id);  
+            const data = await window.getApi.fetchById(id);
+            document.getElementById("title").value = data.title;
+            document.getElementById("description").value = data.description;
+            document.getElementById("dueDate").value = data.dueDate.split('T')[0];
+            document.getElementById("priority").value = data.priority;
+            document.getElementById("status").value = data.status;
+
+            modal.classList.add("flex");
+            modal.classList.remove("hidden");
         }
         catch(err){
             console.error(err);

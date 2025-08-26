@@ -5,13 +5,24 @@ window.addEventListener("DOMContentLoaded", async () => {
     const modal = document.getElementById("modal");
     const closeModalBtn = document.getElementById("closeModal");
 
-    addBtn.addEventListener("click", () => openModal(modal,"addBtn"));
+    addBtn.addEventListener("click", async () => await openModal("addBtn"));
     closeModalBtn.addEventListener("click", () => closeOpenModal(modal));
 });
 
-function openModal(modal,source){
-    modal.classList.add("flex");
-    modal.classList.remove("hidden");
+async function openModal(source,id){
+    const modal = document.getElementById("modal");
+    if(source === "addBtn"){
+        modal.classList.add("flex");
+        modal.classList.remove("hidden");
+    }
+    else if(source === "card"){
+        try{
+            const data = await window.getApi.fetchById(id);  
+        }
+        catch(err){
+            console.error(err);
+        }
+    }
 }
 
 function closeOpenModal(modal){
@@ -60,6 +71,7 @@ function populateTodos(todos){
                 </span>
             </div>
         `;
+        card.addEventListener("click",async() => await openModal("card",todo.id));
         container.appendChild(card);
     });
 }

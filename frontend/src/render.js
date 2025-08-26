@@ -1,11 +1,32 @@
 window.addEventListener("DOMContentLoaded", async () => {
+    await init();
+
+    const addBtn = document.getElementById("addTodo");
+    const modal = document.getElementById("modal");
+    const closeModalBtn = document.getElementById("closeModal");
+
+    addBtn.addEventListener("click", () => openModal(modal,"addBtn"));
+    closeModalBtn.addEventListener("click", () => closeOpenModal(modal));
+});
+
+function openModal(modal,source){
+    modal.classList.add("flex");
+    modal.classList.remove("hidden");
+}
+
+function closeOpenModal(modal){
+    modal.classList.remove("flex");
+    modal.classList.add("hidden");
+}
+
+async function init(){
     try {
         const data = await window.getApi.fetchData();
         populateTodos(data);
     } catch (err) {
         console.error("Error: " + err);
     }
-});
+}
 
 function populateTodos(todos){
     const container = document.getElementById("cards-container");

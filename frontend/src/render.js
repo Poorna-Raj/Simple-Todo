@@ -4,10 +4,42 @@ window.addEventListener("DOMContentLoaded", async () => {
     const addBtn = document.getElementById("addTodo");
     const modal = document.getElementById("modal");
     const closeModalBtn = document.getElementById("closeModal");
+    const btnSave = document.getElementById("modalSave");
 
     addBtn.addEventListener("click", async () => await openModal("addBtn"));
     closeModalBtn.addEventListener("click", () => closeOpenModal(modal));
+    btnSave.addEventListener("click",async ()=> await saveTodo());
 });
+
+async function saveTodo(){
+    try{
+        const currentDate = new Date();
+        const dueDateTime = new Date(document.getElementById("dueDate").value + "T00:00:00")
+        const todo = {
+            title: document.getElementById("title").value,
+            description: document.getElementById("description").value,
+            priority: document.getElementById("priority").value,
+            status: document.getElementById("status").value,
+            dueDate: dueDateTime.toISOString(),
+            createdAt: currentDate.toISOString()
+        };
+
+        console.log(JSON.stringify(todo));
+
+        const response = await window.getApi.saveTodo(JSON.stringify(todo));
+        if(response && response.id){
+            const modal = document.getElementById("modal");
+            closeOpenModal(modal);
+            await init();
+        }
+        else{
+            console.error("Failed to save todo");
+        }
+    }
+    catch(err){
+        console.error(err);
+    }
+}
 
 async function openModal(source,id){
     document.getElementById("title").value = "";

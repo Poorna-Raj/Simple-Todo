@@ -10,9 +10,111 @@
     <link href="./output.css" rel="stylesheet">
 </head>
 
-<body>
-    <h1 class="text-3xl font-bold underline">Hello from Electron renderer!</h1>
-    <p>👋</p>
+<body class="flex m-0 font-sans">
+    <div class="bg-blue-400 w-60 text-white h-screen p-5 fixed flex flex-col">
+        <div class="flex justify-between items-center">
+            <h1 class="font-semibold text-lg">Simple-ToDo</h1>
+            <button class="w-16 h-8 bg-yellow-300 text-black rounded">Add</button>
+        </div>
+
+        <div class="flex flex-col flex-1 justify-evenly">
+            <button class="w-full h-10 bg-green-400 border border-1 border-black rounded text-black">All</button>
+            <button class="w-full h-10 bg-green-400 border border-1 border-black rounded text-black">High</button>
+            <button class="w-full h-10 bg-green-400 border border-1 border-black rounded text-black">Medium</button>
+            <button class="w-full h-10 bg-green-400 border border-1 border-black rounded text-black">Low</button>
+        </div>
+    </div>
+
+    <div class="ml-60 p-6 flex-1">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="flex flex-col p-5 rounded-2xl border-l-4 border-red-500 shadow-md bg-white hover:shadow-xl transition h-64 w-64">
+            
+                <!-- Header -->
+                <div class="flex justify-between items-start">
+                    <h3 class="font-semibold text-lg text-gray-800">Do Homework</h3>
+                    <div class="text-sm text-red-600 font-medium bg-red-100 px-2 py-1 rounded">
+                        2025-08-27
+                    </div>
+                </div>
+            
+                <!-- Description -->
+                <p class="mt-3 text-gray-700 leading-relaxed text-justify line-clamp-5">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Veritatis, quibusdam non. Reprehenderit quo illo fuga saepe
+                    amet quidem veritatis qui nulla natus. Aliquid illum totam
+                    quis nam id doloribus cupiditate.
+                </p>
+            
+                <!-- Footer -->
+                <div class="flex justify-between items-center mt-4 text-sm">
+                    <p class="text-gray-500">Created: 2025-08-27</p>
+                    <span class="bg-blue-500 text-white text-xs font-semibold px-2 py-1 rounded">
+                        Pending
+                    </span>
+                </div>
+            
+            </div>
+
+            <div
+                class="flex flex-col p-5 rounded-2xl border-l-4 border-green-500 shadow-md bg-white hover:shadow-xl transition h-64 w-64">
+            
+                <!-- Header -->
+                <div class="flex justify-between items-start">
+                    <h3 class="font-semibold text-lg text-gray-800">Go for a walk</h3>
+                    <div class="text-sm text-red-600 font-medium bg-red-100 px-2 py-1 rounded">
+                        2025-08-28
+                    </div>
+                </div>
+            
+                <!-- Description -->
+                <p class="mt-3 text-gray-700 leading-relaxed text-justify line-clamp-5">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Veritatis, quibusdam non. Reprehenderit quo illo fuga saepe
+                    amet quidem veritatis qui nulla natus. Aliquid illum totam
+                    quis nam id doloribus cupiditate.
+                </p>
+            
+                <!-- Footer -->
+                <div class="flex justify-between items-center mt-4 text-sm">
+                    <p class="text-gray-500">Created: 2025-08-27</p>
+                    <span class="bg-yellow-500 text-white text-xs font-semibold px-2 py-1 rounded">
+                        Ongoing
+                    </span>
+                </div>
+            
+            </div>
+
+            <div
+                class="flex flex-col p-5 rounded-2xl border-l-4 border-blue-500 shadow-md bg-white hover:shadow-xl transition h-64 w-64">
+            
+                <!-- Header -->
+                <div class="flex justify-between items-start">
+                    <h3 class="font-semibold text-lg text-gray-800">Go for a walk</h3>
+                    <div class="text-sm text-red-600 font-medium bg-red-100 px-2 py-1 rounded">
+                        2025-08-28
+                    </div>
+                </div>
+            
+                <!-- Description -->
+                <p class="mt-3 text-gray-700 leading-relaxed text-justify line-clamp-5">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Veritatis, quibusdam non. Reprehenderit quo illo fuga saepe
+                    amet quidem veritatis qui nulla natus. Aliquid illum totam
+                    quis nam id doloribus cupiditate.
+                </p>
+            
+                <!-- Footer -->
+                <div class="flex justify-between items-center mt-4 text-sm">
+                    <p class="text-gray-500">Created: 2025-08-27</p>
+                    <span class="bg-green-500 text-white text-xs font-semibold px-2 py-1 rounded">
+                        Completed
+                    </span>
+                </div>
+            
+            </div>
+
+        </div>
+    </div>
 </body>
 
 </html>

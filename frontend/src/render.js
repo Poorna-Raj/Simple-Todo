@@ -17,6 +17,18 @@ async function openModal(source,id){
     document.getElementById("status").value = "";
     const modal = document.getElementById("modal");
     if(source === "addBtn"){
+        const btnUpdate = document.getElementById("modalUpdate");
+        const btnDelete = document.getElementById("modalDelete");
+        const btnSave = document.getElementById("modalSave");
+        if(btnSave.classList.contains("hidden")){
+            btnSave.classList.remove("hidden");
+        }
+        if(!btnUpdate.classList.contains("hidden")){
+            btnUpdate.classList.add("hidden");
+        }
+        if(!btnDelete.classList.contains("hidden")){
+            btnDelete.classList.add("hidden");
+        }
         modal.classList.add("flex");
         modal.classList.remove("hidden");
     }
@@ -28,6 +40,22 @@ async function openModal(source,id){
             document.getElementById("dueDate").value = data.dueDate.split('T')[0];
             document.getElementById("priority").value = data.priority;
             document.getElementById("status").value = data.status;
+
+            const form = document.getElementById("todoForm");
+            form.dataset.id = data.id;
+            
+            const btnUpdate = document.getElementById("modalUpdate");
+            const btnDelete = document.getElementById("modalDelete");
+            const btnSave = document.getElementById("modalSave");
+            if(btnUpdate.classList.contains("hidden")){
+                btnUpdate.classList.remove("hidden");
+            }
+            if(btnDelete.classList.contains("hidden")){
+                btnDelete.classList.remove("hidden");
+            }
+            if(!btnSave.classList.contains("hidden")){
+                btnSave.classList.add("hidden");
+            }
 
             modal.classList.add("flex");
             modal.classList.remove("hidden");

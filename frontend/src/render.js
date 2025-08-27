@@ -7,12 +7,14 @@ window.addEventListener("DOMContentLoaded", async () => {
     const btnSave = document.getElementById("modalSave");
     const btnUpdate = document.getElementById("modalUpdate");
     const btnDelete = document.getElementById("modalDelete");
+    const btnAllTodo = document.getElementById("btnAllTodo");
 
-    addBtn.addEventListener("click", async () => await openModal("addBtn"));
+    addBtn.addEventListener("click", async() => await openModal("addBtn"));
     closeModalBtn.addEventListener("click", () => closeOpenModal(modal));
-    btnSave.addEventListener("click",async ()=> await saveTodo());
+    btnSave.addEventListener("click",async()=> await saveTodo());
     btnUpdate.addEventListener("click",async()=> await updateTodo());
-    btnDelete.addEventListener("click",async ()=> await deleteTodo());
+    btnDelete.addEventListener("click",async()=> await deleteTodo());
+    btnAllTodo.addEventListener("click",async()=> await init());
 });
 
 async function deleteTodo() {

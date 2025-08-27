@@ -37,5 +37,9 @@ contextBridge.exposeInMainWorld('getApi',{
             }
         });
         return response.json();
+    },
+    getTodoByPriority: async(priority) =>{
+        const response = await fetch(`http://localhost:5282/api/Todos/by-priority/${priority}`);
+        return response.json();
     }
 });

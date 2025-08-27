@@ -8,6 +8,9 @@ window.addEventListener("DOMContentLoaded", async () => {
     const btnUpdate = document.getElementById("modalUpdate");
     const btnDelete = document.getElementById("modalDelete");
     const btnAllTodo = document.getElementById("btnAllTodo");
+    const btnHighTodo = document.getElementById("btnHighTodo");
+    const btnMediumTodo = document.getElementById("btnMediumTodo");
+    const btnLowTodo = document.getElementById("btnLowTodo");
 
     addBtn.addEventListener("click", async() => await openModal("addBtn"));
     closeModalBtn.addEventListener("click", () => closeOpenModal(modal));
@@ -15,7 +18,20 @@ window.addEventListener("DOMContentLoaded", async () => {
     btnUpdate.addEventListener("click",async()=> await updateTodo());
     btnDelete.addEventListener("click",async()=> await deleteTodo());
     btnAllTodo.addEventListener("click",async()=> await init());
+    btnHighTodo.addEventListener("click",async()=> await getTodoByPriority("High"));
+    btnMediumTodo.addEventListener("click",async()=> await getTodoByPriority("Medium"));
+    btnLowTodo.addEventListener("click",async()=> await getTodoByPriority("Low"));
 });
+
+async function getTodoByPriority(priority) {
+    try{
+        const response = await window.getApi.getTodoByPriority(priority);
+        populateTodos(response);
+    }
+    catch(err){
+        console.error(err);
+    }
+}
 
 async function deleteTodo() {
     try{

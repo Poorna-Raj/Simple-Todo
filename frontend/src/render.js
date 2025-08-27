@@ -189,15 +189,15 @@ function populateTodos(todos){
     todos.forEach(todo => {
         const card = document.createElement("div");
         card.className = `
-            flex flex-col p-5 rounded-2xl 
+            flex flex-col p-5 rounded-2xl border-l-4
             border-l-4 ${getBorderColor(todo.priority)}
-            bg-white hover:shadow-xl transition h-64 w-64
+            bg-white hover:shadow-2xl hover:scale-[1.02] transition-transform duration-200 h-64 w-64
         `;
         card.innerHTML = `
             <!-- Header -->
             <div class="flex justify-between items-start">
                 <h3 class="font-semibold text-lg text-gray-800">${todo.title}</h3>
-                <div class="text-sm text-red-600 font-medium bg-red-100 px-2 py-1 rounded">
+                <div class="text-sm text-red-700 font-medium bg-red-100 px-2 py-1 rounded">
                     ${todo.createdAt.split('T')[0]}
                 </div>
             </div>
@@ -209,8 +209,8 @@ function populateTodos(todos){
 
             <!-- Footer -->
             <div class="flex justify-between items-center mt-4 text-sm">
-                <p class="text-gray-500">Created: ${todo.dueDate.split('T')[0]}</p>
-                <span class="${getStatusBadge(todo.status)} text-xs font-semibold px-2 py-1 rounded">
+                <p class="text-gray-500">${todo.dueDate.split('T')[0]}</p>
+                <span class="${getStatusBadge(todo.status)} text-white text-xs font-semibold px-3 py-1 rounded-full">
                     ${todo.status}
                 </span>
             </div>
@@ -231,9 +231,9 @@ function getBorderColor(priority){
 
 function getStatusBadge(status){
     if(status === "Pending"){
-        return "bg-blue-500";
+        return "bg-blue-600";
     } else if(status === "InProgress"){
-        return "bg-yellow-500";
+        return "bg-yellow-600";
     } 
-    return "bg-green-500";
+    return "bg-green-600";
 }

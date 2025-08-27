@@ -5,11 +5,42 @@ window.addEventListener("DOMContentLoaded", async () => {
     const modal = document.getElementById("modal");
     const closeModalBtn = document.getElementById("closeModal");
     const btnSave = document.getElementById("modalSave");
+    const btnUpdate = document.getElementById("modalUpdate");
 
     addBtn.addEventListener("click", async () => await openModal("addBtn"));
     closeModalBtn.addEventListener("click", () => closeOpenModal(modal));
     btnSave.addEventListener("click",async ()=> await saveTodo());
+    btnUpdate.addEventListener("click",async()=> await updateTodo());
 });
+
+async function updateTodo(){
+    try{
+        const form = document.getElementById("todoForm");
+        const id = form.dataset.id;
+        const dueDateTime = new Date(document.getElementById("dueDate").value + "T00:00:00")
+        const todo = {
+            title: document.getElementById("title").value,
+            description: document.getElementById("description").value,
+            priority: document.getElementById("priority").value,
+            status: document.getElementById("status").value,
+            dueDate: dueDateTime.toISOString()
+        };
+        console.log(JSON.stringify(todo));
+
+        const response = await window.getApi.updateTodo(JSON.stringify(todo),id);
+        if(response && response.id){
+            const modal = document.getElementById("modal");
+            closeOpenModal(modal);
+            await init();
+        }
+        else{
+            console.error("Failed to save todo");
+        }
+    }
+    catch(err){
+        console.error(err);
+    }
+}
 
 async function saveTodo(){
     try{

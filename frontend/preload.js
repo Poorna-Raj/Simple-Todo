@@ -18,5 +18,15 @@ contextBridge.exposeInMainWorld('getApi',{
             body: data
         });
         return response.json();
+    },
+    updateTodo: async(data,id)=>{
+        const response = await fetch(`http://localhost:5282/api/Todos/${id}`,{
+            method: "PUT",
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body:data
+        });
+        return response.json();
     }
 });
